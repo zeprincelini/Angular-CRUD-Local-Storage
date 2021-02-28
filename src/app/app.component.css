@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+}
+.side{
+    width: 15%;
+    height: 100vh;
+    background-color: #00B3FF;
+}
+.main{
+    width: 85%;
+    background-color: chocolate;
+}
