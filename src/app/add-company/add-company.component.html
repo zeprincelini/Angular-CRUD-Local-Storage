@@ -3,14 +3,28 @@
         <h1>Add Company</h1>
     </div>
     <div class="form-body">
-        <form action="" (ngSubmit) = "onSubmit()">
-            <mat-form-field>
-                <mat-label>Company Name</mat-label>
-                <input matInput placeholder="Name" formControlName="name">
+        <form action="" (ngSubmit) = "onSubmit()" [formGroup] = "company">
+            <mat-form-field appearance="standard">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName = "name">
             </mat-form-field>
             <mat-form-field appearance="standard">
-                <input matInput placeholder="company" formControlName="name">
+                <mat-label>Address</mat-label>
+                <input matInput type="text" formControlName = "address">
+                <div *ngIf="formValidation.name.touched && formValidation.name.invalid" class="text-danger">
+                    <div *ngIf="formValidation.name.errors.required">Name is required.</div>
+                    <div *ngIf="formValidation.name.errors?.maxlength">Maximum 50 characters.</div>
+                  </div>
             </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName = "email">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Phone no</mat-label>
+                <input matInput type="tel" formControlName = "phone">
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Add</button>
         </form>
     </div>
 </div>

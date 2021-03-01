@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-company',
@@ -7,13 +7,23 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./add-company.component.css']
 })
 export class AddCompanyComponent implements OnInit {
-//companyForm: FormGroup;
-
-  constructor() { }
-
-  ngOnInit(): void {
+  company: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    address: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    phone: new FormControl('', [Validators.required, Validators.maxLength(15)])
+  });
+  constructor() {
     
+   }
+
+  ngOnInit(): void {}
+
+  get formValidation(){
+    return this.company.controls;
   }
 
-  onSubmit(){}
+  onSubmit(){
+    console.log(this.company.value);
+  }
 }
