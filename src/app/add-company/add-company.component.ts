@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-add-company',
@@ -8,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-company.component.css']
 })
 export class AddCompanyComponent implements OnInit {
+submitted = false;
 employeeDesignation = ['Developer', 'Manager', 'System Admin', 'Team Lead', 'PM'];
 today = new Date();
 yesterday = this.today.setDate(this.today.getDate() - 1);
@@ -27,7 +29,7 @@ skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 
       email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       phone: new FormControl('', [Validators.required, Validators.maxLength(15)]),
       skills: new FormGroup({
-        name: new FormControl('Java', [Validators.required]),
+        name: new FormControl(['Java'], [Validators.required]),
         rating: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)])
       }),
       education: new FormGroup({
@@ -41,7 +43,7 @@ skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 
       })
     })
   });
-  constructor(private snackbar: MatSnackBar) {
+  constructor(private snackbar: MatSnackBar, private crud: CrudService) {
     
    }
 
@@ -71,7 +73,15 @@ skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 
   
 
   onSubmit(){
-    console.log(this.company.value);
+    this.submitted = true;
+    if(this.company.valid){
+      this.crud.create(this.company.value);
+    this.snackbar.open('Added Successfully', 'dismiss');
+    }
+  }
+
+  test(){
+    this.crud.create([{'bob': 'bdoe', 'sssparse': 'nnint'},{'dkey': 'dvalue', 'gkgyle': 'gdio'}]);
     this.snackbar.open('Added Successfully', 'dismiss');
   }
 }

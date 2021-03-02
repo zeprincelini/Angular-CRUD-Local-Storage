@@ -1,0 +1,16 @@
+table{
+    width: 90%;
+}
+mat-paginator{
+    width: 90%;
+}
+.table{
+ margin-left: 10%;
+}
+
+.button{
+    margin-right: 20px;
+}
+th.mat-sort-header-sorted{
+    color: #ffffff;
+}

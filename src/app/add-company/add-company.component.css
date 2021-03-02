@@ -14,3 +14,7 @@ form .mat-form-field{
     text-transform: capitalize;
     font-weight: bold;
 }
+
+.text-danger{
+    color: red;
+}

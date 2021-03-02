@@ -8,10 +8,9 @@
                 <mat-label>Name</mat-label>
                 <input matInput type="text" formControlName = "name">
             </mat-form-field>
-            <div *ngIf="formValidation.name.touched && formValidation.name.invalid" class="text-danger">
+            <div *ngIf="submitted && formValidation.name.errors" class="text-danger">
                 <div *ngIf="formValidation.name.errors?.required">Name is required.</div>
-                <div *ngIf="formValidation.name.errors?.maxlength">Maximum 50 characters.</div>
-              </div>
+            </div>
             <mat-form-field appearance="standard">
                 <mat-label>Address</mat-label>
                 <input matInput type="text" formControlName = "address">
@@ -20,16 +19,25 @@
                 <mat-label>Email</mat-label>
                 <input matInput type="email" formControlName = "email">
             </mat-form-field>
+            <div *ngIf="submitted && formValidation.email.errors" class="text-danger">
+                <div *ngIf="formValidation.email.errors?.required">Email is required.</div>
+            </div>
             <mat-form-field appearance="standard">
                 <mat-label>Phone no</mat-label>
                 <input matInput type="tel" formControlName = "phone">
             </mat-form-field>
+            <div *ngIf="submitted && formValidation.phone.errors" class="text-danger">
+                <div *ngIf="formValidation.phone.errors?.required">Phone no is required.</div>
+            </div>
             <div formGroupName="employee">
                 <h3>Employee Details</h3>
                 <mat-form-field appearance="standard">
                     <mat-label>Name</mat-label>
                     <input matInput type="text" formControlName = "name">
                 </mat-form-field>
+                <div *ngIf="submitted && formValidation.name.errors" class="text-danger">
+                    <div *ngIf="formValidation.name.errors?.required">Employee name is required.</div>
+                </div>
                 <mat-form-field appearance="standard">
                     <mat-label>designation</mat-label>
                     <mat-select formControlName="designation">
@@ -42,14 +50,23 @@
                     <mat-datepicker-toggle matSuffix [for]= "picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
+                <!-- <div *ngIf="submitted && formValidation.date.errors" class="text-danger">
+                    <div *ngIf="formValidation.date.errors?.required">Date is required.</div>
+                </div> -->
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput type="email" formControlName = "email">
                 </mat-form-field>
+                <div *ngIf="submitted && formValidation.email.errors" class="text-danger">
+                    <div *ngIf="formValidation.email.errors?.required">Employee email is required.</div>
+                </div>
                 <mat-form-field>
                     <mat-label>Phone</mat-label>
                     <input matInput type="tel" formControlName = "phone">
                 </mat-form-field>
+                <div *ngIf="submitted && formValidation.phone.errors" class="text-danger">
+                    <div *ngIf="formValidation.phone.errors?.required">Employee Phone no is required.</div>
+                </div>
                 <div formGroupName ="skills">
                     <h3>Skills</h3>
                     <mat-form-field appearance="standard">
