@@ -8,13 +8,13 @@
                 <mat-label>Name</mat-label>
                 <input matInput type="text" formControlName = "name">
             </mat-form-field>
+            <div *ngIf="formValidation.name.touched && formValidation.name.invalid" class="text-danger">
+                <div *ngIf="formValidation.name.errors?.required">Name is required.</div>
+                <div *ngIf="formValidation.name.errors?.maxlength">Maximum 50 characters.</div>
+              </div>
             <mat-form-field appearance="standard">
                 <mat-label>Address</mat-label>
                 <input matInput type="text" formControlName = "address">
-                <div *ngIf="formValidation.name.touched && formValidation.name.invalid" class="text-danger">
-                    <div *ngIf="formValidation.name.errors.required">Name is required.</div>
-                    <div *ngIf="formValidation.name.errors?.maxlength">Maximum 50 characters.</div>
-                  </div>
             </mat-form-field>
             <mat-form-field appearance="standard">
                 <mat-label>Email</mat-label>
@@ -24,6 +24,71 @@
                 <mat-label>Phone no</mat-label>
                 <input matInput type="tel" formControlName = "phone">
             </mat-form-field>
+            <div formGroupName="employee">
+                <h3>Employee Details</h3>
+                <mat-form-field appearance="standard">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName = "name">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>designation</mat-label>
+                    <mat-select formControlName="designation">
+                      <mat-option *ngFor = "let list of employeeDesignation" [value]='list'>{{list}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]= "picker" [max] ='today' formControlName = "date">
+                    <mat-datepicker-toggle matSuffix [for]= "picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName = "email">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <input matInput type="tel" formControlName = "phone">
+                </mat-form-field>
+                <div formGroupName ="skills">
+                    <h3>Skills</h3>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Skill Set</mat-label>
+                        <mat-select formControlName="name" multiple>
+                          <mat-option *ngFor = "let list of skills" [value]='list'>{{list}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Rating</mat-label>
+                        <input matInput type="number" formControlName = "rating" min="1" max="5">
+                    </mat-form-field>
+                </div>
+                <div formGroupName="education">
+                    <h3>Education</h3>
+                   <div formArrayName="school">
+                        <div *ngFor="let ed of school.controls;let i = index">
+                            <div [formGroupName]= "i">
+                                <mat-form-field>
+                                    <mat-label>Schl</mat-label>
+                                    <input matInput type="text" formControlName = "school">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Course</mat-label>
+                                    <input matInput type="text" formControlName = "course">
+                                </mat-form-field>
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Date</mat-label>
+                                    <input matInput [matDatepicker]= "picker2" [max] ='today' formControlName = "year">
+                                    <mat-datepicker-toggle matSuffix [for]= "picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+                
+            </div>
+            <button mat-raised-button color="warn" (click)="addSchool()">skul</button>
             <button mat-raised-button color="primary" type="submit">Add</button>
         </form>
     </div>

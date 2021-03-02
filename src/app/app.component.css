@@ -5,8 +5,11 @@
     width: 15%;
     height: 100vh;
     background-color: #5F5F5F;
+    /* overflow-y: hidden; */
 }
 .main{
     width: 85%;
     background-color: #BABABA;
+    height: 100vh;
+    overflow-y: scroll;
 }
