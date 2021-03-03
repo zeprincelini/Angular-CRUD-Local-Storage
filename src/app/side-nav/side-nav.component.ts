@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
-
+click = true;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+onClick(){
+  this.click = !this.click;
+}
 }

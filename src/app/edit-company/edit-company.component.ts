@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CrudService } from '../crud.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-company',
-  templateUrl: './add-company.component.html',
-  styleUrls: ['./add-company.component.css']
+  selector: 'app-edit-company',
+  templateUrl: './edit-company.component.html',
+  styleUrls: ['./edit-company.component.css']
 })
-export class AddCompanyComponent implements OnInit {
-submitted = false;
-employeeDesignation = ['Developer', 'Manager', 'System Admin', 'Team Lead', 'PM'];
-today = new Date();
-yesterday = this.today.setDate(this.today.getDate() - 1);
-skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 'PHP',
-  'GIT', 'AWS', 'Python', 'Django', 'C', 'C++', 'C#', 'Unity', 'R', 'AI', 'NLP', 'Photoshop', 'Nodejs' 
-  ];
+export class EditCompanyComponent implements OnInit {
+  submitted = false;
+  employeeDesignation = ['Developer', 'Manager', 'System Admin', 'Team Lead', 'PM'];
+  today = new Date();
+  yesterday = this.today.setDate(this.today.getDate() - 1);
+  skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 'PHP',
+    'GIT', 'AWS', 'Python', 'Django', 'C', 'C++', 'C#', 'Unity', 'R', 'AI', 'NLP', 'Photoshop', 'Nodejs' 
+    ];
+  data = [];
+  currentUrl;
 
   company: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -43,16 +46,15 @@ skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 
       })
     })
   });
-  constructor(private snackbar: MatSnackBar, private crud: CrudService) {
-    
-   }
 
-  ngOnInit(): void {}
+  constructor(private snackbar: MatSnackBar, private crud: CrudService, private routeId: ActivatedRoute) { }
 
-  // date(){
-  //   let today = new Date();
-  //   return today.setDate(today.getDate() - 1);
-  // }
+  ngOnInit(): void {
+    this.currentUrl = this.routeId.snapshot.params;
+    this.data = this.crud.getCompanyById(this.currentUrl);
+    console.log(this.data[0])
+  }
+
   get formValidation(){
     return this.company.controls;
   }
@@ -78,10 +80,5 @@ skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 
       this.crud.create(this.company.value);
     this.snackbar.open('Added Successfully', 'dismiss');
     }
-  }
-
-  test(){
-    this.crud.create({'name': 'bob', 'email': 'b@b.com', 'phone': 12222, 'date': '1212'});
-    this.snackbar.open('Added Successfully', 'dismiss');
   }
 }

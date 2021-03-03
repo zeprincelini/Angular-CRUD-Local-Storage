@@ -1,12 +1,12 @@
 <div class="add-section">
     <div class="head">
-        <h1>Add Company</h1>
+        <h1>Edit Company</h1>
     </div>
     <div class="form-body">
         <form action="" (ngSubmit) = "onSubmit()" [formGroup] = "company">
             <mat-form-field appearance="standard">
                 <mat-label>Name</mat-label>
-                <input matInput type="text" formControlName = "name">
+                <input matInput type="text" formControlName = "name" value="{{data[0].name}}">
             </mat-form-field>
             <div *ngIf="submitted && formValidation.name.errors" class="text-danger">
                 <div *ngIf="formValidation.name.errors?.required">Name is required.</div>
@@ -33,7 +33,7 @@
                 <h3>Employee Details</h3>
                 <mat-form-field appearance="standard">
                     <mat-label>Name</mat-label>
-                    <input matInput type="text" formControlName = "name">
+                    <input matInput type="text" formControlName = "name" value="{{data[0].name}}">
                 </mat-form-field>
                 <div *ngIf="submitted && formValidation.name.errors" class="text-danger">
                     <div *ngIf="formValidation.name.errors?.required">Employee name is required.</div>
@@ -105,7 +105,7 @@
                 </div>
                 
             </div>
-            <button mat-raised-button color="warn" (click)="test()">skul</button>
+            <button mat-raised-button color="warn" >skul</button>
             <button mat-raised-button color="primary" type="submit">Add</button>
         </form>
         

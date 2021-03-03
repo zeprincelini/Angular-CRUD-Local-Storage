@@ -1,0 +1,20 @@
+form .mat-form-field{
+    display: block;
+    width: 500px;
+}
+.form-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.head{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.text-danger{
+    color: red;
+}

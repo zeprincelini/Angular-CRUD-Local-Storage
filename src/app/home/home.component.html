@@ -9,30 +9,30 @@
 
             <ng-container matColumnDef= 'name'>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef = "let name; index as i">{{dataSource[i].name}}</td>
+                <td mat-cell *matCellDef = "let name; index as i">{{name.name}}</td>
             </ng-container>
 
             <ng-container matColumnDef= 'email'>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                <td mat-cell *matCellDef = "let email; index as i;">{{dataSource[i].email}}</td>
+                <td mat-cell *matCellDef = "let email; index as i;">{{email.email}}</td>
             </ng-container>
 
             <ng-container matColumnDef= 'phone'>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
-                <td mat-cell *matCellDef = "let phone; index as i;">{{dataSource[i].employee.phone}}</td>
+                <td mat-cell *matCellDef = "let phone; index as i;">{{phone.phone}}</td>
             </ng-container>
 
             <ng-container matColumnDef= 'date'>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-                <td mat-cell *matCellDef = "let date; index as i;">{{dataSource[i].employee.date}}</td>
+                <td mat-cell *matCellDef = "let date; index as i;">{{date.employee.date}}</td>
             </ng-container>
 
             <ng-container matColumnDef= 'actions'>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-                <td mat-cell *matCellDef = "let date; index as i;">
+                <td mat-cell *matCellDef = "let ac; index as i;">
                     <div style="display: flex;">
-                        <button mat-raised-button color="accent" class="button">Edit</button>
-                        <button mat-raised-button color="warn" (click) ="delete(dataSource[4].name)">Delete</button>
+                        <button mat-raised-button color="accent" [routerLink] ="['/edit/', ac.name]" class="button">Edit</button>
+                        <button mat-raised-button color="warn" (click) ="delete(ac.name)">Delete</button>
                     </div>
                 </td>
             </ng-container>
