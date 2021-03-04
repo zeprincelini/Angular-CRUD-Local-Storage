@@ -50,9 +50,12 @@ export class EditCompanyComponent implements OnInit {
   constructor(private snackbar: MatSnackBar, private crud: CrudService, private routeId: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.currentUrl = this.routeId.snapshot.params;
+    this.currentUrl = this.routeId.snapshot.params.id;
     this.data = this.crud.getCompanyById(this.currentUrl);
-    console.log(this.data[0])
+    // setTimeout(()=>{
+    //   let store = this.crud.getCompanyById(this.currentUrl);
+    //   this.data = store;
+    // }, 3000)
   }
 
   get formValidation(){
@@ -77,7 +80,7 @@ export class EditCompanyComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if(this.company.valid){
-      this.crud.create(this.company.value);
+    this.crud.updateCompany(this.company.value);
     this.snackbar.open('Added Successfully', 'dismiss');
     }
   }

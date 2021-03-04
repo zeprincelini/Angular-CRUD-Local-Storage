@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CrudService {
   holder = [];
+  source = [];
   constructor() { }
 
   create(body){
@@ -33,12 +34,9 @@ export class CrudService {
     let company = JSON.parse(localStorage.getItem('company'));
     for(let i = 0; i < company.length; i++){
       if(company[i].name == id){
-        this.holder = company[i];
-        //localStorage.setItem('company', JSON.stringify(this.holder));
+       return(company[i])
       }
     }
-    // localStorage.setItem('company', JSON.stringify(company))
-    return(this.holder)
   }
 
   deleteCompany(id){
@@ -51,10 +49,10 @@ export class CrudService {
     localStorage.setItem('company', JSON.stringify(company));
   }
 
-  updateCompany(oldCompany, newCompany){
+  updateCompany(newCompany){
     let company = JSON.parse(localStorage.getItem('company'));
     for(let i = 0; i < company.length; i++){
-      if(company[i].name == oldCompany.name){
+      if(company[i].name == newCompany.name){
         company[i] = newCompany;
       }
     }
