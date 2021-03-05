@@ -1,3 +1,6 @@
+.head{
+    background-color: #424242;
+}
 table{
     width: 90%;
 }
@@ -13,4 +16,10 @@ mat-paginator{
 }
 th.mat-sort-header-sorted{
     color: #ffffff;
+}
+
+@media only screen and (max-width: 768px){
+    .container{
+        height: 100vh;
+    }
 }

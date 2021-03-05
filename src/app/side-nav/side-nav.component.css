@@ -20,6 +20,9 @@ ul{
     padding-inline-start: 0px !important;
     margin-top: 30px;
 }
+/* .nav li:first-child{
+    border-top: 1px solid #ffffff;
+} */
 .nav li{
     padding: 20px 20px 5px 20px;
     border-bottom: 1px solid #ffffff;

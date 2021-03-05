@@ -20,7 +20,6 @@ dataSource;
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.crud.getCompany());
-    console.log(this.dataSource);
   }
 
   ngAfterViewInit(){
