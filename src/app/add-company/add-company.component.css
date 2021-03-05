@@ -18,3 +18,8 @@ form .mat-form-field{
 .text-danger{
     color: red;
 }
+
+@media only screen and (max-width: 768px){
+    .add-section{width: 100%;
+    padding: 20px;}
+}
