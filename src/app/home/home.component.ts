@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CrudService } from '../crud.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,18 +14,18 @@ displayedColumns : String[]= ['no', 'name', 'email', 'phone', 'date', 'actions']
 dataSource;
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
-//@ViewChild(MatTable) tableu: MatTable<any>;
+@ViewChild(MatTable) tableu: MatTable<any>;
 @ViewChild(MatTableDataSource) tab: MatTableDataSource<any>;
-  constructor(private crud: CrudService) { }
+  constructor(private crud: CrudService, private change: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.crud.getCompany());
-    this.dataSource.sort = this.sort;
     console.log(this.dataSource);
   }
 
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   delete(id){
@@ -35,7 +35,9 @@ dataSource;
       }
     }
     this.crud.deleteCompany(id);
-    this.tab._updateChangeSubscription;
+    //this.tableu.renderRows();
+    // this.change.detectChanges();
+    this.dataSource = new MatTableDataSource(this.crud.getCompany());
   }
 
   applyFilter(val: String){
