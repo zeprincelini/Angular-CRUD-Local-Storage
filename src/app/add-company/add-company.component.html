@@ -21,10 +21,11 @@
             </mat-form-field>
             <div *ngIf="submitted && formValidation.email.errors" class="text-danger">
                 <div *ngIf="formValidation.email.errors?.required">Email is required.</div>
+                <div *ngIf="formValidation.email.errors?.email">Enter valid email.</div>
             </div>
             <mat-form-field appearance="standard">
                 <mat-label>Phone no</mat-label>
-                <input matInput type="tel" formControlName = "phone">
+                <input matInput type="number" formControlName = "phone">
             </mat-form-field>
             <div *ngIf="submitted && formValidation.phone.errors" class="text-danger">
                 <div *ngIf="formValidation.phone.errors?.required">Phone no is required.</div>
@@ -62,7 +63,7 @@
                 </div>
                 <mat-form-field>
                     <mat-label>Phone</mat-label>
-                    <input matInput type="tel" formControlName = "phone">
+                    <input matInput type="number" formControlName = "phone">
                 </mat-form-field>
                 <div *ngIf="submitted && formValidation.phone.errors" class="text-danger">
                     <div *ngIf="formValidation.phone.errors?.required">Employee Phone no is required.</div>
@@ -79,6 +80,10 @@
                         <mat-label>Rating</mat-label>
                         <input matInput type="number" formControlName = "rating" min="1" max="5">
                     </mat-form-field>
+                    <!-- <div *ngIf="submitted && formValidation.rating.errors" class="text-danger">
+                        <div *ngIf="formValidation.rating.errors?.required">Rating is required.</div>
+                        <div *ngIf="formValidation.rating.errors?.max">max value is 5.</div>
+                    </div> -->
                 </div>
                 <div formGroupName="education">
                     <h3>Education</h3>

@@ -20,13 +20,13 @@ skills = ['Java', 'Angular', 'CSS', 'HTML', 'JavaScript', 'UI', 'SQL', 'React', 
   company: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     address: new FormControl(''),
-    email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    email: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.email]),
     phone: new FormControl('', [Validators.required, Validators.maxLength(15)]),
     employee: new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(25)]),
       designation: new FormControl('Developer'),
       date: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      email: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.maxLength(15)]),
       skills: new FormGroup({
         name: new FormControl(['Java'], [Validators.required]),
