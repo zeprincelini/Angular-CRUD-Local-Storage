@@ -18,3 +18,19 @@ form .mat-form-field{
 .text-danger{
     color: red;
 }
+
+.add{
+    text-align: right;
+}
+
+.add a{
+    color: blue;
+}
+.add:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px){
+    .add-section{width: 100%;
+    padding: 20px;}
+}

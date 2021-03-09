@@ -99,14 +99,18 @@
                                     <mat-datepicker-toggle matSuffix [for]= "picker2"></mat-datepicker-toggle>
                                     <mat-datepicker #picker2></mat-datepicker>
                                 </mat-form-field>
+                                <hr>
                             </div>
                         </div>
                    </div>
+                   <div class="add">
+                    <a (click) = "addSchool()">add school</a>
+                </div>
                 </div>
                 
             </div>
-            <button mat-raised-button color="warn" >skul</button>
-            <button mat-raised-button color="primary" type="submit">Add</button>
+            <!-- <button mat-raised-button color="warn" >skul</button> -->
+            <button mat-raised-button color="primary" type="submit">Update</button>
         </form>
         
     </div>

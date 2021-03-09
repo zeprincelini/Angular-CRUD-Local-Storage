@@ -39,6 +39,10 @@ ul{
 .nav a:hover{
     color: #5F5F5F;
 }
+.active{
+    color: #5F5F5F;
+    background-color: #ffffff;
+}
 
 @media only screen and (max-width: 768px){
     ul{

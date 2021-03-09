@@ -81,7 +81,7 @@ export class EditCompanyComponent implements OnInit {
     this.submitted = true;
     if(this.company.valid){
     this.crud.updateCompany(this.company.value);
-    this.snackbar.open('Added Successfully', 'dismiss');
+    this.snackbar.open('Updated Successfully', 'dismiss');
     }
   }
 }
